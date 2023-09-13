@@ -46,3 +46,10 @@ group :development do
   # gem "spring"
 end
 
+
+gem "rails_admin", "~> 3.1"
+
+gem "devise", "~> 4.9"
+gem "sassc-rails"
+
+gem "enumerize", "~> 2.7"
