@@ -1,0 +1,2 @@
+class AcademicBond < ApplicationRecord
+end
