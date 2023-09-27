@@ -16,4 +16,8 @@ module ApiCommomResponses
   def render_unprocessable_entity(data = {})
     render json: { errors: data }, status: :unprocessable_entity
   end
+
+  def render_not_found
+    head :not_found
+  end
 end

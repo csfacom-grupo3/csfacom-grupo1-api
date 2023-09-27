@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :users, only: [] do
+      resources :users do
         collection do
           post :sign_in, controller: :sessions, action: :create
         end

@@ -10,12 +10,10 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def response_handler(service)
-    if service.success?
-      authenticate = build_headers_token(service.result)
-      render_success(serialize_resource(service.result, UserSerializer, scope: authenticate))
-    else
-      render_unprocessable_entity(service.errors)
-    end
+    return render_unprocessable_entity(service.errors) unless service.success?
+
+    authenticate = build_headers_token(service.result)
+    render_success(serialize_resource(service.result, UserSerializer, authenticate))
   end
 
 end

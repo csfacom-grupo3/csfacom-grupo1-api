@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :token
+  attributes :id, :email, :name, :description, :token, :permission
 
   def token
     scope[:token] if scope.present?
