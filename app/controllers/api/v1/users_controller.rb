@@ -36,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(id: params[:id])
+    @user = User.with_attached_avatar.find_by(id: params[:id])
 
     render_not_found unless @user.present?
   end

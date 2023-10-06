@@ -47,6 +47,7 @@ gem 'enumerize', '~> 2.7'
 gem 'rails_admin', '~> 3.1'
 gem 'rubocop', '~> 1.56'
 gem 'sassc-rails'
+gem 'image_processing', '~> 1.2'
 
 gem "mysql2", "~> 0.5.5"
 

@@ -12,4 +12,5 @@ class User < ApplicationRecord
 
   belongs_to :academic_bond
 
+  has_many :projects, foreign_key: :coordinator_id
 end
