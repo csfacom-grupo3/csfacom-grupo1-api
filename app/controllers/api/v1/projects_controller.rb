@@ -33,13 +33,12 @@ class Api::V1::ProjectsController < ApplicationController
     render_unprocessable_entity
   end
 
-
   private
 
   def find_project
     @project = Project.find_by(id: params[:id])
 
-    return render_not_found if @project.blank?
+    render_not_found if @project.blank?
   end
 
   def project_params
@@ -49,4 +48,5 @@ class Api::V1::ProjectsController < ApplicationController
   def user_is_admin_or_projects?
     render_unauthorized unless current_user.admin? || current_user.projects?
   end
+
 end

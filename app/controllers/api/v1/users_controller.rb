@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user_from_token
-  before_action :user_is_admin?, except: %i[:index]
+  before_action :user_is_admin?, except: [:index]
   before_action :find_user, only: [:show, :update, :destroy]
 
   def index
