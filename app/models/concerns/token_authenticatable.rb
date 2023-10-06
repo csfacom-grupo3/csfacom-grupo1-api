@@ -22,8 +22,8 @@ module TokenAuthenticatable
 
   def build_header_auth_response(token)
     {
-      token: token,
-      email: email
+      token:,
+      email:
     }
   end
 

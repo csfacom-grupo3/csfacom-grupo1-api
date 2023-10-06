@@ -8,4 +8,8 @@ class User < ApplicationRecord
   serialize :permission, Array
   enumerize :permission, in: [:projects, :news, :admin], multiple: true, predicates: true
 
+  has_one_attached :avatar
+
+  belongs_to :academic_bond
+
 end

@@ -22,7 +22,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    byebug
     return render_unprocessable_entity(@user.errors.full_messages) unless @user.update(user_params)
 
     render_created(serialize_resource(@user, UserSerializer))
