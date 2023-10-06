@@ -45,8 +45,4 @@ class Api::V1::ProjectsController < ApplicationController
     params.permit(:name, :start_date, :end_date, :description, :coordinator_id)
   end
 
-  def user_is_admin_or_projects?
-    render_unauthorized unless current_user.admin? || current_user.projects?
-  end
-
 end

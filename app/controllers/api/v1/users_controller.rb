@@ -45,8 +45,4 @@ class Api::V1::UsersController < ApplicationController
     params.permit(:email, :name, :description, :password, :password_confirmation, permission: [])
   end
 
-  def user_is_admin?
-    render_unauthorized unless current_user.admin?
-  end
-
 end
