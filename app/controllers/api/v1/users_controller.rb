@@ -1,16 +1,16 @@
 class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user_from_token
-  before_action :user_is_admin?
+  before_action :user_is_admin?, except: %i[:index]
   before_action :find_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
 
-    render_success(serialize_resource_list(@users, UserSerializer))
+    render_success(serialize_resource_list(@users, User::FullSerializer))
   end
 
   def show
-    render_success(serialize_resource(@user, UserSerializer))
+    render_success(serialize_resource(@user, User::FullSerializer))
   end
 
   def create
@@ -18,13 +18,13 @@ class Api::V1::UsersController < ApplicationController
 
     return render_unprocessable_entity(@user.errors.full_messages) unless @user.persisted?
 
-    render_created(serialize_resource(@user, UserSerializer))
+    render_created(serialize_resource(@user, User::FullSerializer))
   end
 
   def update
     return render_unprocessable_entity(@user.errors.full_messages) unless @user.update(user_params)
 
-    render_created(serialize_resource(@user, UserSerializer))
+    render_created(serialize_resource(@user, User::FullSerializer))
   end
 
   def destroy

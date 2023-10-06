@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
     return render_unprocessable_entity(service.errors) unless service.success?
 
     authenticate = build_headers_token(service.result)
-    render_success(serialize_resource(service.result, UserSerializer, authenticate))
+    render_success(serialize_resource(service.result, User::FullSerializer, authenticate))
   end
 
 end

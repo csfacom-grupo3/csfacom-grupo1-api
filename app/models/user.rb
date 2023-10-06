@@ -13,4 +13,8 @@ class User < ApplicationRecord
   belongs_to :academic_bond
 
   has_many :projects, foreign_key: :coordinator_id
+
+  def avatar_url
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, host: Rails.application.credentials.dig(Rails.env.to_sym, :app_domain)) if avatar.attached?
+  end
 end
