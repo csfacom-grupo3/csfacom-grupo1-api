@@ -48,11 +48,9 @@ gem 'rails_admin', '~> 3.1'
 gem 'rubocop', '~> 1.56'
 gem 'sassc-rails'
 gem 'image_processing', '~> 1.2'
-
 gem "mysql2", "~> 0.5.5"
-
 gem "bcrypt", "~> 3.1"
-
 gem "rails-patterns", "~> 0.11.0"
-
 gem "active_model_serializers", "~> 0.10.13"
+gem 'rack-cors'
+
