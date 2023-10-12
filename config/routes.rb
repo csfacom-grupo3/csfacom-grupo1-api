@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       end
       resources :projects
       resources :academic_bonds, except: [:show]
+      resources :roles, except: [:show]
     end
   end
 end
