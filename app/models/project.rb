@@ -3,5 +3,6 @@ class Project < ApplicationRecord
   validates_associated :coordinator
 
   belongs_to :coordinator, class_name: 'User'
-
+  has_many :project_members
+  has_many :members, through: :project_members
 end
