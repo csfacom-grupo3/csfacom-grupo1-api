@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :roles, through: :project_members
 
   def avatar_url
-    Rails.application.routes.url_helpers.rails_blob_url(avatar, host: Rails.application.credentials.dig(Rails.env.to_sym, :app_domain)) if avatar.attached?
+    return unless avatar.attached?
+
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, host: Rails.application.credentials.dig(Rails.env.to_sym, :app_domain))
   end
+
 end

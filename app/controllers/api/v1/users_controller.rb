@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     @users = User.all
 
-    render_success(serialize_resource_list(@users, User::FullSerializer))
+    render_success(serialize_resource_list(@users, User::LightSerializer))
   end
 
   def show

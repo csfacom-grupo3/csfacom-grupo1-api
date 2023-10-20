@@ -5,7 +5,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def index
     render_success(
-      serialize_resource_list(Project.all, Projects::FullSerializer)
+      serialize_resource_list(Project.all, Projects::LightSerializer)
     )
   end
 
