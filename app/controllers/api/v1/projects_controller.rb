@@ -42,7 +42,7 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.permit(:name, :start_date, :end_date, :description, :coordinator_id)
+    params.permit(:name, :start_date, :end_date, :description, :coordinator_id, project_members_attributes: [:member_id, :role_id])
   end
 
 end

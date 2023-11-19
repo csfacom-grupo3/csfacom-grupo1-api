@@ -5,4 +5,7 @@ class Project < ApplicationRecord
   belongs_to :coordinator, class_name: 'User'
   has_many :project_members
   has_many :members, through: :project_members
+
+  accepts_nested_attributes_for :project_members
+
 end

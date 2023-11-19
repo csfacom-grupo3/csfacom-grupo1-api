@@ -1,7 +1,7 @@
 class Api::V1::RolesController < ApplicationController
   before_action :authenticate_user_from_token
   before_action :user_is_admin?, except: [:index]
-  before_action :find_role, only: [ :update, :destroy]
+  before_action :find_role, only: [:update, :destroy]
 
   def index
     render_success(serialize_resource_list(Role.all, Roles::LightSerializer))
@@ -20,7 +20,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   def destroy
-    return render_success if @role.destroy
+    render_success if @role.destroy
   end
 
   private
@@ -34,4 +34,5 @@ class Api::V1::RolesController < ApplicationController
 
     render_not_found unless @role.present?
   end
+
 end

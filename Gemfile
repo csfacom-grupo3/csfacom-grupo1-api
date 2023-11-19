@@ -31,10 +31,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem "rack-cors"
+gem "rack-cors"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -47,10 +47,12 @@ gem 'enumerize', '~> 2.7'
 gem 'rails_admin', '~> 3.1'
 gem 'rubocop', '~> 1.56'
 gem 'sassc-rails'
-gem 'image_processing', '~> 1.2'
 gem "mysql2", "~> 0.5.5"
 gem "bcrypt", "~> 3.1"
 gem "rails-patterns", "~> 0.11.0"
 gem "active_model_serializers", "~> 0.10.13"
-gem 'rack-cors'
 
+
+gem "rspec", "~> 3.12"
+
+gem "cucumber", "~> 9.0"
