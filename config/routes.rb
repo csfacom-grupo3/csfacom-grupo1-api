@@ -13,7 +13,11 @@ Rails.application.routes.draw do
           post :sign_in, controller: :sessions, action: :create
         end
       end
-      resources :projects
+
+      resources :projects do
+        resources :project_members
+      end
+
       resources :academic_bonds, except: [:show]
       resources :roles, except: [:show]
     end
