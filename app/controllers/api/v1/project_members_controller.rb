@@ -17,7 +17,7 @@ class Api::V1::ProjectMembersController < ApplicationController
   end
 
   def update
-    return render_unprocessable_entity(@project_member.errors.full_messages) unless @project_member.update(project_members_params)
+    return render_unprocessable_entity(@project_member.errors.full_messages) unless @project_member.update(update_member_params)
 
     render_created(serialize_resource(@project_member, ProjectMembers::LightSerializer))
   end
@@ -43,6 +43,10 @@ class Api::V1::ProjectMembersController < ApplicationController
   end
 
   def project_members_params
+    params.permit(:member_id, :role_id)
+  end
+
+  def update_member_params
     params.permit(:role_id)
   end
 
