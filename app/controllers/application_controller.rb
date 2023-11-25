@@ -13,6 +13,10 @@ class ApplicationController < ActionController::API
     JSON.parse(serialized_resource)
   end
 
+  def user_is_admin_or_news?
+    render_unauthorized unless current_user.admin? || current_user.news?
+  end
+
   def user_is_admin_or_projects?
     render_unauthorized unless current_user.admin? || current_user.projects?
   end

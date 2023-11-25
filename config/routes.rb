@@ -18,6 +18,8 @@ Rails.application.routes.draw do
         resources :project_members
       end
 
+      resources :news
+
       resources :academic_bonds, except: [:show]
       resources :roles, except: [:show]
     end
