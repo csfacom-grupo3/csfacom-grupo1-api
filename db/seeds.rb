@@ -10,3 +10,9 @@
 
   puts "Created #{kind}" if bond.new_record?
 end
+
+[ "Dono de Produto (PO)", "Desenvolvedor", "Tester", "Agile Master", "Gerente de projeto" ].each do |kind|
+  role = Role.find_or_create_by({ role_kind: kind })
+
+  puts "Created #{kind}" if role.new_record?
+end
