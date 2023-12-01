@@ -4,7 +4,7 @@ class News < ApplicationRecord
   enumerize :visibility, in: { visible: 0, draft: 1, invisible: 2 }, default: :draft, predicates: true
   has_many_attached :images
 
-  has_many :news_projects
+  has_many :news_projects, dependent: :destroy
   has_many :projects, through: :news_projects
 
   accepts_nested_attributes_for :news_projects

@@ -13,9 +13,9 @@ class User < ApplicationRecord
   belongs_to :academic_bond
 
   has_many :coordinates, class_name: 'Project', foreign_key: :coordinator_id
-  has_many :project_members, foreign_key: :member_id
+  has_many :project_members, foreign_key: :member_id, dependent: :destroy
 
-  has_many :projects, through: :project_members
+  has_many :projects, through: :project_members, dependent: :destroy
   has_many :roles, through: :project_members
 
   def avatar_url
