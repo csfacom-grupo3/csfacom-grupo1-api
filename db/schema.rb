@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_25_201530) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_30_235905) do
   create_table "academic_bonds", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "bond_kind"
     t.datetime "created_at", null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_201530) do
     t.integer "visibility"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "news_projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "news_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["news_id"], name: "index_news_projects_on_news_id"
+    t.index ["project_id"], name: "index_news_projects_on_project_id"
   end
 
   create_table "project_members", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -105,6 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_201530) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "news_projects", "news"
+  add_foreign_key "news_projects", "projects"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "roles"
   add_foreign_key "project_members", "users", column: "member_id"

@@ -18,6 +18,8 @@ class Api::V1::NewsController < ApplicationController
   end
 
   def update
+    @news.news_projects.destroy_all
+
     return render_success(serialize_resource(@news, News::FullSerializer)) if @news.update(news_params)
 
     render_unprocessable_entity(@news.errors.full_messages)
@@ -30,11 +32,11 @@ class Api::V1::NewsController < ApplicationController
   private
 
   def news_params
-    params.permit(:title, :subtitle, :content, :visibility, images: [])
+    params.permit(:id, :title, :subtitle, :content, :visibility, images: [], news_projects_attributes: [:project_id])
   end
 
   def find_news
-    @news = News.find_by(id: params[:id])
+    @news = News.find_by(id: news_params[:id])
 
     render_not_found unless @news.present?
   end

@@ -22,6 +22,8 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def update
+    @project.project_members.destroy_all
+
     return render_unprocessable_entity(@project.errors.full_messages) unless @project.update(project_params)
 
     render_created(serialize_resource(@project, Projects::FullSerializer))
